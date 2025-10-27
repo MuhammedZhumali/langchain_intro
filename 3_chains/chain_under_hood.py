@@ -18,7 +18,7 @@ format_prompt = RunnableLambda(lambda x: prompt_template.invoke(**x))
 invoke_model = RunnableLambda(lambda x: model.invoke(x,to_messages()))
 parse_output = RunnableLambda(lambda x: x.content)
 
-chain = RunnableSequence(first=format_prompt, second=invoke_model, third=parse_output)
+chain = RunnableSequence(first=format_prompt, second=[invoke_model], third=parse_output)
 
 response = chain.invoke({"topic": "lawyers", "joke_count": 3})
 
