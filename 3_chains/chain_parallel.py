@@ -36,6 +36,7 @@ def analyze_cons(features):
 def combine_pros_cons(pros, cons):
     return f"Pros:\n{pros}\nCons:\n{cons}"
 
+#new simple chains
 pros_branch = (
     RunnableLambda(lambda x: analyze_pros(x) | model | StrOutputParser())
 )
